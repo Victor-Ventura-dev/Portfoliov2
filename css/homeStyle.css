@@ -1,0 +1,296 @@
+/* Eliminación de márgenes del body */
+
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+/* Animaciones */
+
+@keyframes brightText 
+{
+    0% {
+        text-shadow: 0 0 5px #03ffff, 0 0 15px #03ffff, 0 0 30px #03ffff, 0 0 60px #03ffff;
+    }
+    100% {
+        text-shadow: none;
+    }
+ }
+
+ @keyframes showBrightText 
+ {
+    0% {
+        opacity: 0; text-shadow: 0 0 5px #03ffff, 0 0 15px #03ffff, 0 0 30px #03ffff, 0 0 60px #03ffff;
+    }
+    100% {
+        opacity: 1; text-shadow: none;
+    }
+ }
+
+
+@keyframes brightReverse
+{
+    0% { opacity: 0; box-shadow: none;}
+    100% { opacity: 1; box-shadow: 0 0 5px #03ffff, 0 0 15px #03ffff, 0 0 30px #03ffff, 0 0 60px #03ffff; }
+}
+
+@keyframes moveUp {
+    from {
+        padding-top: 20%;
+    }
+    to {
+        padding-top: 0;
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        margin-right: 20%;
+    }
+    to {
+        margin: 0;
+    }
+}
+
+
+
+/* Definición de clase container para establecer css grid de 3 columnas */
+
+.container
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    
+}
+
+/* Definición del main como la primera fila del css grid */
+
+.row1{
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+/* Definición del nav y disposición flex para establecerlo como fila */
+/* Posteriormente se agrega un margin left a las columnas de la lista ubicadas a la derecha de la 1ª para que no colisionen */
+
+.nav
+{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: center;
+    padding-left: 0;
+    margin-top: 3.5vh;
+    
+   
+}
+
+.option:not(:first-of-type)
+{
+    margin-left: 30px;
+}
+
+/* Estilo de los links de navegación */
+/* Definición de animación de texto iluminado a apagado y aplicación al hover del link*/
+
+.link 
+{
+    text-transform:uppercase;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.link:hover
+{
+    animation: brightText 10s;
+}
+
+
+
+/* Creación de las gafas */
+
+.row2{
+    grid-column: 1 / 4;
+    grid-row: 2;
+    height: 27vh;
+}
+
+.container-glasses
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 6vh 0 0 0;
+    animation: moveUp 5s;
+}
+
+.glasses, .glasses2 {
+	border-radius: 15%;
+    width: 350px; height: 220px;
+
+    background: #BFF;
+	background: linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -webkit-linear-gradient(top, #FFF 1%, #BFF 100%);
+	background: -moz-linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -ms-linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -o-linear-gradient(top, #BFF 5%, #DFF 100%);
+    animation: brightReverse 15s;
+    box-shadow: 0 0 2px #03ffff, 0 0 15px #03ffff, 0 0 30px #03ffff, 0 0 60px #03ffff;
+}
+
+.join
+{
+    width: 4vw; height: 5px;
+    border-radius: 10%;
+    margin-top: 7vh;
+    background: #BFF;
+	background: linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -webkit-linear-gradient(top, #FFF 1%, #BFF 100%);
+	background: -moz-linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -ms-linear-gradient(top, #BFF 5%, #DFF 100%);
+	background: -o-linear-gradient(top, #BFF 5%, #DFF 100%);
+    animation: brightReverse 15s;
+    border: 0;
+    z-index: -1;
+}
+
+/* Creación de firma */
+
+.row3C3{
+    grid-column: 2/3;
+    grid-row: 3;
+    height: 5vh;
+}
+
+.container-name
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    animation: moveLeft 6s;
+   
+}
+
+.container-name > *, .container-profession > *
+{
+    color:black;
+    font-family: 'Source Code Pro', monospace;
+    text-transform:uppercase;
+    font-size: smaller;
+    animation: showBrightText 10s;
+}
+
+.row3C4{
+    grid-column: 3/4;
+    grid-row: 3;
+}
+
+
+
+.container-profession
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    animation: moveUp 5s;
+}
+
+
+/* Media querys gafas */
+
+@media only screen and (max-width: 830px) 
+{
+
+    .row2
+    {
+        height: 20vh;
+    }
+
+    .glasses, .glasses2 
+    {
+        width: 250px; height: 140px;
+    }
+
+    .join
+    {
+        width: 7vw;
+        margin-top: 5vh;
+    }
+
+    .container-name > *, .container-profession > *
+    {
+        font-size: 7pt;
+    }
+
+}
+
+@media only screen and (max-width: 620px) 
+{
+
+    .row2
+    {
+        height: 16vh;
+    }
+
+    .container-glasses
+    {
+        margin: 6vh 0 0 0;
+    }
+
+    .glasses, .glasses2 
+    {
+        width: 170px; height: 100px;
+    }
+
+    .join
+    {
+        width: 7vw;
+        margin-top: 3vh;
+    }
+
+    .container-name > *, .container-profession > *
+    {
+        font-size: 5pt;
+    }
+
+}
+
+@media only screen and (max-width: 460px) 
+{
+
+    .row2
+    {
+        height: 10vh;
+    }
+
+    .container-glasses
+    {
+        margin: 2vh 0 0 0;
+    }
+
+    .glasses, .glasses2 
+    {
+        width: 140px; height: 80px;
+    }
+
+    .join
+    {
+        margin-top: 3vh;
+    }
+
+    .container-name > *, .container-profession > *
+    {
+        font-size: 4pt;
+    }
+
+}
+
+
+
+
+
